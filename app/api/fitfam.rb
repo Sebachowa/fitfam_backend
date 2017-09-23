@@ -31,6 +31,7 @@ module Fitfam
     end
 
     resource :events do
+
       desc 'Return all events'
       get do
         events = Event.all.map do |event|
@@ -85,9 +86,19 @@ module Fitfam
       desc 'Create a booking'
       params do
         requires :event_id, type: Integer
+        requires :user_id, type: String
       end
       post do
         Booking.create!(params)
+      end
+
+      desc 'Update a booking (check in)'
+      params do
+        requires :id, type: Integer
+      end
+      put ':id/check_in' do
+        booking = Booking.find(params[:id])
+        booking.update!(checked_in: true)
       end
 
       desc 'Cancel a booking(removes the booking entirely)'
