@@ -11,7 +11,8 @@ gem 'rails', '~> 5.1.4'
 
 
 gem 'grape'
-
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
